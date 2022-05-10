@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'devextreme/dist/css/dx.light.compact.css';
+
 import './App.css';
+import RHFControls from "./features/RHFControls";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
+import Controls from "./features/Controls";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className={'main'}>
+            <BrowserRouter>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'baseline', gap: 8, marginBottom: 40}}>
+                    <NavLink to={'/'}>Controls</NavLink>
+                    <NavLink to={'/react-hook-form'}>RHF Controls</NavLink>
+                </div>
+
+                <Routes>
+                    <Route path="/" element={<Controls />} />
+                    <Route path="/react-hook-form" element={<RHFControls />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
